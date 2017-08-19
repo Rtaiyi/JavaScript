@@ -1,0 +1,354 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>倒计时抢购商品</title>
+<style>
+ h4,ul,p,span,li{
+    margin: 0px;
+    padding: 0px;
+ }
+ li{
+    list-style: none;
+ }
+ #box{
+    width: 670px;
+    height: 750px;
+    /*border: 1px solid red;*/
+    margin: auto;
+    position: relative;
+    top: 50px;
+ }
+ h4{
+    color:#636b52; 
+    position: absolute;
+    top: 10px;
+    left: 8px;
+ }
+ #productBox{
+    width: 648px;
+    height: 300px;
+    /*border: 1px solid blue;*/
+    border-top: 2px solid #a0a0a4;
+    position: absolute;
+    top: 35px;
+    left: 10px;
+ }
+  .proBg1{
+    position: absolute;
+    top: 0px;
+  }
+ .proBg1 li{
+    width: 160px;
+    height: 278px;
+    background: white;
+    float: left;
+ }
+ #pro{
+    z-index: 1;
+ }
+ #pro li{
+    width: 160px;
+    height: 278px;
+    /*border: 1px solid red;*/
+    position: absolute;
+    top: 0px;
+ }
+ .setTime{
+    width: 110px;
+    margin-top: 5px;
+    margin-left: 3px;
+   /* position: absolute;
+    top: 5px;
+    left: 3px;*/
+ }
+ .sureBtn{
+    width: 35px;
+    border: none;
+    background: white;
+    font-weight: 600;
+    color: #bd4229;
+   /* position: absolute;
+    top: 5px;
+    left: 120px;*/
+ }
+ .lastTime{
+    /*position: absolute;
+    top: 40px;
+    left: 5px;*/
+    margin-top: 10px;
+    margin-left: 3px;
+    border: none;
+    color: grey;
+    font-size: 14px;
+ }
+ #pro img{
+    /*position: absolute;
+    top: 70px;
+    left: 4px;*/
+    width: 148px ;
+    height: 147px;
+    margin-top: 3px;
+    margin-left: 4px;
+ }
+  #pro p{
+    width: 150px;
+    height: 35px;
+    color: #373739;
+    font-size: 12px;
+    /*position: absolute;
+    top: 200px;
+    left: 8px;*/
+    margin-left: 4px;
+  }
+   #pro div{
+    /*position: absolute;*/
+    /*top: 250px;
+    left: 8px;*/
+    width: 145px;
+    height: 24px;
+    color: #959495;
+    margin-top: 1px;
+    margin-left: 8px;
+   }
+   #pro div span{
+    color: red;
+   }
+   #pro div em{
+    color: red;
+   }
+   /*下架商品区域*/
+  #oldProBox{
+    width: 648px;
+    height: 396px;
+    /*border: 1px solid black;*/
+    position: absolute;
+    top: 350px;
+    left: 10px;
+  }
+  #oldProTitle{
+    width: 648px;
+    height: 40px;
+    background: #f5e1fe;
+    color: #3c1009;
+    line-height: 40px;
+  }
+  #oldProTitle .proName{
+    margin-left: 100px;
+  }
+  #oldProTitle .proPrice{
+    margin-left: 100px;
+  }
+  #oldProList li{
+    width: 648px;
+    height: 60px;
+    background: #f5e1fe;
+    margin-top: 5px; 
+
+  }
+  #oldProList li p{
+    width: 200px;
+    font-size: 12px;
+    line-height: 60px;
+    float: left;
+    margin-left: 10px;
+  }
+  #oldProList li span{
+    width: 78px;
+    line-height: 60px;
+    float: left;
+    margin-left: 50px;
+    color: #892312;
+  }
+  #oldProList li img{
+    width: 80px;
+    height: 56px;
+    border: 1px solid red;
+    margin-top: 1px;
+    margin-left: 195px;
+  }
+  #hollpri{
+    margin-left: 10px;
+  }
+  #hollpri span{
+    color: #892312;
+  }
+</style>
+<!-- 引入domove的js文件 -->
+<script src="shopping.js"></script>
+<script>
+    window.onload=function(){
+     
+        var oUl=document.getElementById('pro');
+        var aLi=oUl.getElementsByTagName('li');
+         
+         // 找到下架商品里的ul
+        var oUl1=document.getElementById('oldProList');
+
+
+
+
+        var PriceOp=document.getElementById('hollpri');
+        var  Totalprice=PriceOp.getElementsByTagName('span')[0];
+        // 初始化
+        // 让组，li依次横向排开
+        for(var i=0;i<aLi.length;i++){
+            aLi[i].style.left=i*160+'px';
+        }
+     
+      // 每一组Li是一个变化的值，li里面的元素效果是一样的，所以单独把Li拿出来传参
+        for(var i=0;i<aLi.length;i++){
+            Timing(aLi[i],oUl1);
+        }
+
+        function Timing(Li,Ul){
+            // 在每组Li里面找到元素
+            var aInp=Li.getElementsByTagName('input');
+            var oImg=Li.getElementsByTagName('img')[0];
+            var oP=Li.getElementsByTagName('p')[0];
+            var oSpan=Li.getElementsByTagName('span')[0];
+
+            var iNow=null;
+            var iNew=null;
+            var t=0;
+            var timer=null;
+            var str='';
+
+
+            aInp[1].onclick=function(){
+                 // 事件控制定时器,先清空再加入
+                  clearInterval(timer);
+                   // 设计一个未来的时间等于第下个按钮里的值
+                   iNew=new Date(aInp[0].value);
+
+                    timer=setInterval(function(){
+                        // 每过一称，获取一下时间
+                        iNow=new Date();
+                        t = Math.floor( ( iNew - iNow ) / 1000 );
+                        // alert(1)
+                        if(t>=0){
+                            str = Math.floor(t/86400)+'天'+Math.floor(t%86400/3600)+'时'+Math.floor(t%86400%3600/60)+'分'+t%60+'秒';
+                             aInp[2].value='剩余'+str;
+
+                        }else{
+                            // 当时间小于0时
+                            // 清除定时器
+                            clearInterval(timer);
+
+                            // 我倒计时结束：li抖动之后向下移动的同时透明度减少
+                            shake(Li,'left',function(){
+                                // 向下运动
+                                doMove (Li,'top',10,400,function(){
+                                    // 动态地加入下加要产品的li列表
+                                     Ul.innerHTML+='<li><p>疯狂599，美的爆款隐藏式面板……</p><span>'+oSpan.innerHTML+'</span> <img src="'+oImg.src+'"></li>';
+
+                                    // 把总价加起来
+                                    // 注意：这里一定要把页面上总价span里的价格转换成数字再相加
+                                    Totalprice.innerHTML=parseFloat(Totalprice.innerHTML)+parseFloat(oSpan.innerHTML);
+
+                                });
+
+                                // 透明度的变化
+                                opacity(Li,0.1,0);
+
+
+                            });
+                            
+                        }
+
+                  },1000);
+
+
+
+            }
+
+
+        }
+    }
+
+</script>
+</head>
+<body>
+    <div id="box">
+        <h4>限购时间</h4>
+
+        <!-- 产品区域 -->
+        <div id="productBox">
+            <ul id="proBg" class="proBg1">
+                <li><img src="img/10.jpg"></li>
+                <li><img src="img/10.jpg"></li>
+                <li><img src="img/10.jpg"></li>
+                <li><img src="img/10.jpg"></li>
+            </ul>
+            <ul id="pro" class="proBg1">
+                <li>
+                    <input class="setTime" type="textarea" name="" value="January 18,2017 11:11:0"> 
+                    <!-- textarea这个文本域是用户在页面可以修改value的值 -->
+                    <input class="sureBtn" type="button" name="" value="确定">
+                    <input class="lastTime" type="" name="" value="剩余0天0小时0分0秒">
+                    <img src="img/11.jpg">
+                    <p>疯狂599，美的爆款隐藏式面板下拉门微博炉</p>
+                    <div>抢购价：<em>￥</em><span>599.00</span></div>
+                </li>
+                <li>
+                     <input class="setTime" type="textarea" name="" value="January 18,2017 11:23:0"> 
+                    <!-- textarea这个文本域是用户在页面可以修改value的值 -->
+                    <input class="sureBtn" type="button" name="" value="确定">
+                    <input class="lastTime" type="" name="" value="剩余0天0小时0分0秒">
+                    <img src="img/12.jpg">
+                    <p>疯狂599，美的爆款隐藏式面板下拉门微博炉</p>
+                    <div>抢购价:<em>￥</em><span>3299.00</span></div>
+                </li>
+                <li>
+                    <input class="setTime" type="textarea" name="" value="January 18,2017 11:23:0"> 
+                    <!-- textarea这个文本域是用户在页面可以修改value的值 -->
+                    <input class="sureBtn" type="button" name="" value="确定">
+                    <input class="lastTime" type="" name="" value="剩余0天0小时0分0秒">
+                    <img src="img/13.jpg">
+                    <p>疯狂599，美的爆款隐藏式面板下拉门微博炉</p>
+                    <div>抢购价：<em>￥</em><span>1.00</span></div>
+                </li>
+                <li>
+                    <input class="setTime" type="textarea" name="" value="January 18,2017 11:23:0"> 
+                    <!-- textarea这个文本域是用户在页面可以修改value的值 -->
+                    <input class="sureBtn" type="button" name="" value="确定">
+                    <input class="lastTime" type="" name="" value="剩余0天0小时0分0秒">
+                    <img src="img/14.jpg">
+                    <p>疯狂599，美的爆款隐藏式面板下拉门微博炉</p>
+                    <div>抢购价：<em>￥</em><span>168.00</span></div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- 下架产品列表区域 -->       
+         <div id="oldProBox"> 
+            <div id="oldProTitle">
+                <span class="proName">产品名称</span><span class="proPrice">价格</span>
+            </div>
+            <ul id="oldProList">    
+                <!-- <li><p>疯狂599，美的爆款隐藏式面板……</p><span>599.00</span> <img src="img/11.jpg"></li> -->
+           <!--  <li>
+               <p>疯狂599，美的爆款隐藏式面板……</p>
+               <span>3299.00</span> 
+               <img src="img/12.jpg">
+            </li>
+            <li>
+               <p>疯狂599，美的爆款隐藏式面板……</p>
+               <span>1.00</span> 
+               <img src="img/13.jpg">
+            </li>
+            <li>
+               <p>疯狂599，美的爆款隐藏式面板……</p>
+               <span>168.00</span> 
+               <img src="img/14.jpg">
+            </li>            --> 
+         </ul>
+         <p id="hollpri">总价：<span>0.00</span>元</p> 
+    </div>
+
+
+
+</div>
+</body>
+</html>
