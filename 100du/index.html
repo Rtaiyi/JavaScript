@@ -7,19 +7,7 @@
 		<link rel="icon" href="img/100du.ico" />
 		<script src="js/jquery-1.8.3.js"></script>
 		
-		<script>
-			$(function(){
-				//search
-				(function(){
-					
-				})();
-				
-				//焦点图
-				
-			})
-			
-			
-		</script>
+		<script src="js/index.js"></script>
 		
 		<!--[if IE 6]--->
 		<script src="js/DD_belatedPNG_0.0.8a.js"></script>
@@ -67,7 +55,7 @@
 			<div class="search_img"></div>
 			
 			<div class="bar">
-				<ul class="menu">
+				<ul class="menu" id="menu">
 					<li class="active">搜店</li>
 					<li class="gradient">地址</li>
 					<li class="gradient">优惠券</li>
@@ -77,7 +65,7 @@
 			</div>
 			
 			<form class="form" action="#" method="post">
-				<input class="text" type="text" value="例如：荷棠鱼坊烤鱼 或 樱花日本料理" />
+				<input class="text" type="text" value="" />
 				<input class="submit" type="submit" value=""/>
 			</form>
 			
@@ -87,14 +75,14 @@
 			<div class="update">
 				<div class="wrap">
 					<ul>
-						<li><a href="#"><strong>萱萱 </strong><span>5分钟前</span>写了一篇新文章：那些灿烂华美的瞬间…</a></li>
-						<li><a href="#"><strong>欢欢 </strong><span>5分钟前</span>写了一篇新文章：那些灿烂华美的瞬间…</a></li>
+						<!--<li><a href="#"><strong>萱萱 </strong><span>5分钟前</span>写了一篇新文章：那些灿烂华美的瞬间…</a></li>
+						<li><a href="#"><strong>欢欢 </strong><span>7分钟前</span>写了一篇新文章：那些灿烂华美的瞬间…</a></li>
 						<li><a href="#"><strong>欣欣</strong><span>5分钟前</span>写了一篇新文章：那些灿烂华美的瞬间…</a></li>
-						<li><a href="#"><strong>哈哈 </strong><span>5分钟前</span>写了一篇新文章：那些灿烂华美的瞬间…</a></li>
+						<li><a href="#"><strong>哈哈 </strong><span>5分钟前</span>写了一篇新文章：那些灿烂华美的瞬间…</a></li>-->
 					</ul>
 				</div>
-				<a href="javascript:;" class="triangle_up"></a>
-				<a href="javascript:;" class="triangle_down_red"></a>
+				<a id="update_UpBtn" href="javascript:;" class="triangle_up"></a>
+				<a id="update_DownBtn" href="javascript:;" class="triangle_down_red"></a>
 			</div>
 			
 		</div> 
@@ -116,7 +104,7 @@
 					</div>
 				
 					<div class="options fr">
-						<ul class="nav">
+						<ul class="nav tabNav1">
 							<li class="active fl">
 								<strong>HOT SHOP </strong>
 								<span>红店铺</span>
@@ -129,7 +117,7 @@
 							</li>
 						</ul>
 						<div class="con">
-							<ul class="hot_list">
+							<ul class="hot_list tabCon1">
 								<li>
 									<div class="img" ><a href="#"><img src="img/content/hot_list_pic1.gif" /></a></div>
 									<div class="text">
@@ -154,6 +142,41 @@
 								</li>
 								<li>
 									<div class="img" ><a href="#"><img src="img/content/hot_list_pic1.gif" /></a></div>
+									<div class="text">
+										<h3><a href="#">御舟和涵珍园国际酒店</a></h3>
+										<p>
+											区域：朝阳/CBD<br/>
+											人均：180元<br/>
+											人气：12321
+										</p>
+									</div>
+								</li>
+							</ul>
+							<ul class="hot_list tabCon1">
+								<li>
+									<div class="img" ><a href="#"><img src="img/content/hot_list_pic2.gif" /></a></div>
+									<div class="text">
+										<h3><a href="#">御舟和涵珍园国际酒店</a></h3>
+										<p>
+											区域：朝阳/CBD<br/>
+											人均：180元<br/>
+											人气：12321
+										</p>
+									</div>
+								</li>
+								<li>
+									<div class="img" ><a href="#"><img src="img/content/hot_list_pic2.gif" /></a></div>
+									<div class="text">
+										<h3><a href="#">御舟和涵珍园国际酒店</a></h3>
+										<p>
+											区域：朝阳/CBD<br/>
+											人均：180元<br/>
+											人气：12321
+										</p>
+									</div>
+								</li>
+								<li>
+									<div class="img" ><a href="#"><img src="img/content/hot_list_pic2.gif" /></a></div>
 									<div class="text">
 										<h3><a href="#">御舟和涵珍园国际酒店</a></h3>
 										<p>
@@ -220,10 +243,10 @@
 									<li>7</li>
 									<li>8</li>
 									<li>9</li>
-									<li>10</li>
+									<li>10<img class="img" info="不知道不明了为什么，我的心明明是想靠近" src="img/content/hot7.gif" /></li>
 									<li>11</li>
 									<li>12</li>
-									<li>13</li>
+									<li>13<img class="img" info="不知道不明了为什么，我的心明明是想靠近" src="img/content/hot6.gif" /></li>
 									<li>14</li>
 									<li>15</li>
 									<li>16</li>
@@ -231,11 +254,11 @@
 									<li>18</li>
 									<li>19</li>
 									<li>20</li>
-									<li>21<img class="active" src="img/content/today1.gif" /></li>
+									<li>21<img class="active" info="迟到的荣誉绑定事件瞌睡虫残酷但是内存才是农村守财奴出生地上次你说" src="img/content/today1.gif" /></li>
 									<li>22</li>
 									<li>23</li>
 									<li>24</li>
-									<li>25<img class="img" src="img/content/today2.gif" /></li>
+									<li>25<img class="img" info="迟到的荣誉绑定事件瞌睡虫残酷但是内存才是农村守财奴出生地上次你说" src="img/content/today2.gif" /></li>
 									<li>26</li>
 									<li>27</li>
 									<li>28</li>
@@ -273,16 +296,16 @@
 							<span>RECOMMEND</span>
 							<strong>精彩推荐</strong>
 						</h2>
-						<div class="pic">
+						<div class="pic" id="fade">
 							<ul >
 								<li><a href="#"><img src="img/content/img1.gif" /></a></li>
 								<li><a href="#"><img src="img/content/img2.gif" /></a></li>
 								<li><a href="#"><img src="img/content/img3.gif" /></a></li>
 							</ul>
 							<ol>
-								<li><a href="#"><img src="img/content/img1.gif" /></a></li>
-								<li><a href="#"><img src="img/content/img2.gif" /></a></li>
-								<li class="active"><a href="#"><img src="img/content/img3.gif" /></a></li>
+								<li class="active"><a href="javascript:;"><img src="img/content/img1.gif" /></a></li>
+								<li><a href="javascript:;"><img src="img/content/img2.gif" /></a></li>
+								<li><a href="javascript:;"><img src="img/content/img3.gif" /></a></li>
 							</ol>
 							<p>爸爸去哪儿了</p>
 						</div>
@@ -345,7 +368,7 @@
 				<div class="main_wrap clear">
 					
 					<div class="options fl">
-						<ul class="nav">
+						<ul class="nav tabNav2">
 							<li class="active fl">
 								<strong>SUBWAY</strong>
 								<span>地铁交通</span>
@@ -359,7 +382,8 @@
 						</ul>
 						
 						<div class="con">
-							<img src="img/content/123.gif" />
+							<img class="tabCon2" src="img/content/123.gif" />
+							<img class="tabCon2" src="img/content/456.jpg" />
 						</div>
 					</div>
 				
@@ -446,7 +470,7 @@
 						</h2>
 						
 						<div class="tab">
-							<ul>
+							<ul class="tabNav3">
 								<li class="active">
 									有人在问
 									<a href="javascript:;" class="triangle_down_red"></a>
@@ -461,32 +485,84 @@
 								</li>
 							</ul>
 						</div>
-						<ul class="list_section">
-						<li class="title">
-							<strong class="col1">标题</strong>
-							<strong class="col2">状态</strong>
-						</li>
-						<li>
-							<strong class="col1"><a href="#"><span>[<em>休闲]</em></span>推荐几款性价比比较好的冰箱</a></strong>
-							<strong class="col2"><img src="img/ico1.gif"/></strong>
-						</li>
-						<li>
-							<strong class="col1"><a href="#"><span>[<em>休闲]</em></span>老北京一尊黄牛</a></strong>
-							<strong class="col2"><img src="img/ico1.gif"/></strong>
-						</li>
-						<li>
-							<strong class="col1"><a href="#"><span>[<em>休闲]</em></span>老北京一尊黄牛</a></strong>
-							<strong class="col2"><img src="img/ico2.gif"/></strong>
-						</li>
-						<li>
-							<strong class="col1"><a href="#"><span>[<em>休闲]</em></span>老北京一尊黄牛</a></strong>
-							<strong class="col2"><img src="img/ico2.gif"/></strong>
-						</li>
-						<li>
-							<strong class="col1"><a href="#"><span>[<em>休闲]</em></span>老北京一尊黄牛</a></strong>
-							<strong class="col2"><img src="img/ico1.gif"/></strong>
-						</li>
-					</ul>
+						<ul class="list_section tabCon3">
+							<li class="title">
+								<strong class="col1">标题</strong>
+								<strong class="col2">状态</strong>
+							</li>
+							<li>
+								<strong class="col1"><a href="#"><span>[<em>休闲]</em></span>老北京一尊黄牛</a></strong>
+								<strong class="col2"><img src="img/ico1.gif"/></strong>
+							</li>
+							<li>
+								<strong class="col1"><a href="#"><span>[<em>休闲]</em></span>老北京一尊黄牛</a></strong>
+								<strong class="col2"><img src="img/ico1.gif"/></strong>
+							</li>
+							<li>
+								<strong class="col1"><a href="#"><span>[<em>休闲]</em></span>老北京一尊黄牛</a></strong>
+								<strong class="col2"><img src="img/ico2.gif"/></strong>
+							</li>
+							<li>
+								<strong class="col1"><a href="#"><span>[<em>休闲]</em></span>老北京一尊黄牛</a></strong>
+								<strong class="col2"><img src="img/ico2.gif"/></strong>
+							</li>
+							<li>
+								<strong class="col1"><a href="#"><span>[<em>休闲]</em></span>老北京一尊黄牛</a></strong>
+								<strong class="col2"><img src="img/ico1.gif"/></strong>
+							</li>
+						</ul>
+						<ul class="list_section tabCon3">
+							<li class="title">
+								<strong class="col1">标题</strong>
+								<strong class="col2">状态</strong>
+							</li>
+							<li>
+								<strong class="col1"><a href="#"><span>[<em>休闲]</em></span>推荐几款性价比比较好的冰箱</a></strong>
+								<strong class="col2"><img src="img/ico1.gif"/></strong>
+							</li>
+							<li>
+								<strong class="col1"><a href="#"><span>[<em>休闲]</em></span>推荐几款性价比比较好的冰箱</a></strong>
+								<strong class="col2"><img src="img/ico1.gif"/></strong>
+							</li>
+							<li>
+								<strong class="col1"><a href="#"><span>[<em>休闲]</em></span>推荐几款性价比比较好的冰箱</a></strong>
+								<strong class="col2"><img src="img/ico2.gif"/></strong>
+							</li>
+							<li>
+								<strong class="col1"><a href="#"><span>[<em>休闲]</em></span>推荐几款性价比比较好的冰箱</a></strong>
+								<strong class="col2"><img src="img/ico2.gif"/></strong>
+							</li>
+							<li>
+								<strong class="col1"><a href="#"><span>[<em>休闲]</em></span>推荐几款性价比比较好的冰箱</a></strong>
+								<strong class="col2"><img src="img/ico1.gif"/></strong>
+							</li>
+						</ul>
+						<ul class="list_section tabCon3">
+							<li class="title">
+								<strong class="col1">标题</strong>
+								<strong class="col2">状态</strong>
+							</li>
+							<li>
+								<strong class="col1"><a href="#"><span>[<em>休闲]</em></span>北京专场大卖</a></strong>
+								<strong class="col2"><img src="img/ico1.gif"/></strong>
+							</li>
+							<li>
+								<strong class="col1"><a href="#"><span>[<em>休闲]</em></span>北京专场大卖</a></strong>
+								<strong class="col2"><img src="img/ico1.gif"/></strong>
+							</li>
+							<li>
+								<strong class="col1"><a href="#"><span>[<em>休闲]</em></span>北京专场大卖</a></strong>
+								<strong class="col2"><img src="img/ico2.gif"/></strong>
+							</li>
+							<li>
+								<strong class="col1"><a href="#"><span>[<em>休闲]</em></span>北京专场大卖</a></strong>
+								<strong class="col2"><img src="img/ico2.gif"/></strong>
+							</li>
+							<li>
+								<strong class="col1"><a href="#"><span>[<em>休闲]</em></span>北京专场大卖</a></strong>
+								<strong class="col2"><img src="img/ico1.gif"/></strong>
+							</li>
+						</ul>
 						
 						<div class="soso">
 							<form>
@@ -629,7 +705,7 @@
 					
 					<div class="wrap_section1">
 						<div class="tab">
-							<ul>
+							<ul class="tabNav4">
 								<li class="active">
 									人气
 									<a href="javascript:;" class="triangle_down_red"></a>
@@ -644,7 +720,7 @@
 								</li>
 							</ul>
 						</div>
-						<ul class="list_section">
+						<ul class="list_section tabCon4">
 							<li class="title">
 								<strong class="col1">商店</strong>
 								<strong class="col2">省</strong>
@@ -672,6 +748,70 @@
 							</li>
 							<li>
 								<strong class="col1"><a href="#">老北京一尊黄牛</a></strong>
+								<strong class="col2 color">12%</strong>
+								<strong class="col3">345</strong>
+							</li>
+						</ul>
+						<ul class="list_section tabCon4">
+							<li class="title">
+								<strong class="col1">商店</strong>
+								<strong class="col2">省</strong>
+								<strong class="col3">打印</strong>
+							</li>
+							<li>
+								<strong class="col1"><a href="#">瀚海冰茶园</a></strong>
+								<strong class="col2 color">12%</strong>
+								<strong class="col3">345</strong>
+							</li>
+							<li>
+								<strong class="col1"><a href="#">瀚海冰茶园</a></strong>
+								<strong class="col2 color">12%</strong>
+								<strong class="col3">345</strong>
+							</li>
+							<li>
+								<strong class="col1"><a href="#">瀚海冰茶园</a></strong>
+								<strong class="col2 color">12%</strong>
+								<strong class="col3">345</strong>
+							</li>
+							<li>
+								<strong class="col1"><a href="#">瀚海冰茶园</a></strong>
+								<strong class="col2 color">12%</strong>
+								<strong class="col3">345</strong>
+							</li>
+							<li>
+								<strong class="col1"><a href="#">瀚海冰茶园</a></strong>
+								<strong class="col2 color">12%</strong>
+								<strong class="col3">345</strong>
+							</li>
+						</ul>
+						<ul class="list_section tabCon4">
+							<li class="title">
+								<strong class="col1">商店</strong>
+								<strong class="col2">省</strong>
+								<strong class="col3">打印</strong>
+							</li>
+							<li>
+								<strong class="col1"><a href="#">常家可乐宫</a></strong>
+								<strong class="col2 color">12%</strong>
+								<strong class="col3">345</strong>
+							</li>
+							<li>
+								<strong class="col1"><a href="#">常家可乐宫</a></strong>
+								<strong class="col2 color">12%</strong>
+								<strong class="col3">345</strong>
+							</li>
+							<li>
+								<strong class="col1"><a href="#">常家可乐宫</a></strong>
+								<strong class="col2 color">12%</strong>
+								<strong class="col3">345</strong>
+							</li>
+							<li>
+								<strong class="col1"><a href="#">常家可乐宫</a></strong>
+								<strong class="col2 color">12%</strong>
+								<strong class="col3">345</strong>
+							</li>
+							<li>
+								<strong class="col1"><a href="#">常家可乐宫</a></strong>
 								<strong class="col2 color">12%</strong>
 								<strong class="col3">345</strong>
 							</li>
